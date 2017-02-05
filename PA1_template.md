@@ -1,9 +1,4 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
+# Reproducible Research: Peer Assessment 1
 
 
 ## Loading and preprocessing the data
@@ -12,7 +7,8 @@ The activity monitoring original data for this assignment was obtained from [her
 
 The activity monitoring data is loaded in to R via:
 
-```{r}
+
+```r
 activityMonitoringData <- read.csv('activity.csv')
 ```
 
