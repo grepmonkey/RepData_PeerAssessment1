@@ -1,11 +1,16 @@
-# Reproducible Research: Peer Assessment 1
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
 
 
 ## Loading and preprocessing the data
 
 The activity monitoring original data for this assignment was obtained from [here](https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip). A copy of this data has been included as activity.zip and unzipped as activity.csv in this project.
 
-1. Load the data.
+Load the data.
 
 
 ```r
@@ -20,7 +25,7 @@ str(activityMonitoringData)
 ##  $ interval: int  0 5 10 15 20 25 30 35 40 45 ...
 ```
 
-2. Process/transform the data if necessary into a format suitable for your analysis.
+Process/transform the data if necessary into a format suitable for your analysis.
 
 * The steps variable has NA values but we can leave them as they are for the time being.
 
@@ -42,7 +47,7 @@ str(activityMonitoringData)
 
 ## What is mean total number of steps taken per day?
 
-1. Calculate the total number of steps taken per day.
+Calculate the total number of steps taken per day.
 
 
 ```r
@@ -50,7 +55,7 @@ numberOfStepsPerDay <-
   aggregate(steps ~ date, data = activityMonitoringData, FUN = sum)
 ```
 
-2. Make a histogram of the total number of steps taken each day.
+Make a histogram of the total number of steps taken each day.
 
 
 ```r
@@ -60,9 +65,9 @@ hist(
   main = 'Number of steps per day')
 ```
 
-![](PA1_template_files/figure-html/histogram1-1.png)<!-- -->
+![plot of chunk histogram1](figure/histogram1-1.png)
 
-3. Calculate and report the mean and median of the total number of steps taken per day
+Calculate and report the mean and median of the total number of steps taken per day.
 
 
 ```r
@@ -85,7 +90,7 @@ median(numberOfStepsPerDay$steps)
 
 ## What is the average daily activity pattern?
 
-1. Make a time series plot (i.e. 𝚝𝚢𝚙𝚎 = "𝚕") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
+Make a time series plot (i.e. 𝚝𝚢𝚙𝚎 = "𝚕") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis).
 
 
 ```r
@@ -101,9 +106,9 @@ plot(
   type = 'l')
 ```
 
-![](PA1_template_files/figure-html/plot1-1.png)<!-- -->
+![plot of chunk plot1](figure/plot1-1.png)
 
-2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
+Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
 
 ```r
@@ -117,7 +122,7 @@ averageNumberOfStepsPerInterval[which.max(averageNumberOfStepsPerInterval$steps)
 
 ## Imputing missing values
 
-1. Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with 𝙽𝙰s)
+Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with 𝙽𝙰s).
 
 
 ```r
@@ -128,7 +133,7 @@ sum(is.na(activityMonitoringData$steps))
 ## [1] 2304
 ```
 
-2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
+Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 
 Using the mean for that 5-minute interval.
 
@@ -142,7 +147,7 @@ for (i in which(is.na(filledInActivityMonitoringData$steps))) {
 }
 ```
 
-3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
+Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
 
 ```r
@@ -159,7 +164,7 @@ head(filledInActivityMonitoringData)
 ## 6 2.0943396 2012-10-01       25
 ```
 
-4. Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
+Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 
 Performing the same analysis as before:
 
@@ -174,7 +179,7 @@ hist(
   main = 'Number of steps per day')
 ```
 
-![](PA1_template_files/figure-html/histogram2-1.png)<!-- -->
+![plot of chunk histogram2](figure/histogram2-1.png)
 
 
 ```r
@@ -199,7 +204,7 @@ The median value has changed.
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
-1. Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.
+Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.
 
 
 ```r
@@ -239,7 +244,7 @@ str(filledInActivityMonitoringData)
 ##  $ day     : Factor w/ 2 levels "weekday","weekend": 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
-2. Make a panel plot containing a time series plot (i.e. 𝚝𝚢𝚙𝚎 = "𝚕") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis).
+Make a panel plot containing a time series plot (i.e. 𝚝𝚢𝚙𝚎 = "𝚕") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis).
 
 
 ```r
@@ -255,6 +260,6 @@ xyplot(
 )
 ```
 
-![](PA1_template_files/figure-html/plot2-1.png)<!-- -->
+![plot of chunk plot2](figure/plot2-1.png)
 
 From the plot we can see that the weekend data is more uniform than the weekday data.
