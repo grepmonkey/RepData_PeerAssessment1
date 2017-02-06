@@ -10,7 +10,7 @@ output:
 
 The activity monitoring original data for this assignment was obtained from [here](https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip). A copy of this data has been included as activity.zip and unzipped as activity.csv in this project.
 
-Load the data.
+Load the data:
 
 
 ```r
@@ -47,7 +47,7 @@ str(activityMonitoringData)
 
 ## What is mean total number of steps taken per day?
 
-Calculate the total number of steps taken per day.
+Calculate the total number of steps taken per day:
 
 
 ```r
@@ -55,7 +55,7 @@ numberOfStepsPerDay <-
   aggregate(steps ~ date, data = activityMonitoringData, FUN = sum)
 ```
 
-Make a histogram of the total number of steps taken each day.
+Make a histogram of the total number of steps taken each day:
 
 
 ```r
@@ -67,7 +67,7 @@ hist(
 
 ![plot of chunk histogram1](figure/histogram1-1.png)
 
-Calculate and report the mean and median of the total number of steps taken per day.
+Calculate and report the mean and median of the total number of steps taken per day:
 
 
 ```r
@@ -90,7 +90,7 @@ median(numberOfStepsPerDay$steps)
 
 ## What is the average daily activity pattern?
 
-Make a time series plot (i.e. 𝚝𝚢𝚙𝚎 = "𝚕") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis).
+Make a time series plot (i.e. 𝚝𝚢𝚙𝚎 = "𝚕") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis):
 
 
 ```r
@@ -122,7 +122,7 @@ averageNumberOfStepsPerInterval[which.max(averageNumberOfStepsPerInterval$steps)
 
 ## Imputing missing values
 
-Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with 𝙽𝙰s).
+Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with 𝙽𝙰s):
 
 
 ```r
@@ -135,7 +135,7 @@ sum(is.na(activityMonitoringData$steps))
 
 Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 
-Using the mean for that 5-minute interval.
+Using the mean for that 5-minute interval:
 
 
 ```r
@@ -147,7 +147,7 @@ for (i in which(is.na(filledInActivityMonitoringData$steps))) {
 }
 ```
 
-Create a new dataset that is equal to the original dataset but with the missing data filled in.
+Create a new dataset that is equal to the original dataset but with the missing data filled in, the new dataset is filledInActivityMonitoringData:
 
 
 ```r
