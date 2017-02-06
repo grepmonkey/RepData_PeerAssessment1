@@ -74,7 +74,6 @@ mean(numberOfStepsPerDay$steps)
 ```
 
 
-
 ```r
 median(numberOfStepsPerDay$steps)
 ```
@@ -114,6 +113,7 @@ averageNumberOfStepsPerInterval[which.max(averageNumberOfStepsPerInterval$steps)
 ```
 ## [1] 835
 ```
+
 
 ## Imputing missing values
 
@@ -195,6 +195,7 @@ median(numberOfStepsPerDay$steps)
 ```
 
 The median value has changed.
+
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
